@@ -71,7 +71,7 @@ namespace Codigo.Salon{
             this.Temperatura = temp;
             this.Puerta = pu;
 
-            Reservas.Add(new Reserva.Reserva("0000", "0000", id, "0000", "0000", "0000", "0000"));
+            Reservas.Add(new Reserva.Reserva("0000", "0000", id, "", "0000", "0000", "0000", "0000"));
 
         }
 
@@ -83,22 +83,24 @@ namespace Codigo.Salon{
                     Console.WriteLine(Reservas[i].getHoraInicio());
                     Console.WriteLine(Reservas[i].getHoraFinal());
                     Console.WriteLine(Reservas[i].getOcupante());
+                    Console.WriteLine(Reservas[i].getDia());
                     Console.WriteLine(getTemperatura());
                     Console.WriteLine(getEstado());
                 }
             }
         }
 
-        public void setReservas(string hi, string hf, string id){
+        public void setReservas(string hi, string hf, string dia, string id){
             int pl, pt, al, at;
-            pl = int.Parse(hi) - 5;
-            pt = int.Parse(hi) - 10;
+            pl = int.Parse(hi) - 45;
+            pt = int.Parse(hi) - 50;
             al = int.Parse(hf) + 10;
             at = int.Parse(hf) + 5;
             if(Reservas.Count == 1 && Reservas[0].getHoraInicio() == "0000"){
                 Reservas[0].setHoraInicio(hi);
                 Reservas[0].setHoraFinal(hf);
                 Reservas[0].setOcupante(id);
+                Reservas[0].setDia(dia);
                 Reservas[0].setHoraPrenderLuz(pl.ToString());
                 Reservas[0].setHoraPrenderTem(pt.ToString());
                 Reservas[0].setHoraApagarLuz(al.ToString());
@@ -107,7 +109,7 @@ namespace Codigo.Salon{
                 setTemperatura(23);
                 setPuerta(true);
             }else{
-                Reservas.Add(new Reserva.Reserva(hi, hf, id, pl.ToString(), al.ToString(), pt.ToString(), at.ToString()));
+                Reservas.Add(new Reserva.Reserva(hi, hf, id, dia, pl.ToString(), al.ToString(), pt.ToString(), at.ToString()));
                 setEstado("Ocupado");
                 setTemperatura(23);
                 setPuerta(true);

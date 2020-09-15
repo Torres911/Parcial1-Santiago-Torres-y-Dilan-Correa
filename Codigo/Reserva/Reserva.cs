@@ -6,6 +6,7 @@ namespace Codigo.Reserva{
         private string HoraInicio;
         private string HoraFinal;
         private string Ocupante;
+        private string Dia;
         private string HoraPrenderLuz;
         private string HoraApagarLuz;
         private string HoraPrenderTem;
@@ -37,6 +38,14 @@ namespace Codigo.Reserva{
 
         public void setOcupante(string oc){
             this.Ocupante = oc;
+        }
+
+        public void setDia(string dia){
+            this.Dia = dia;
+        }
+
+        public string getDia(){
+            return Dia;
         }
 
         public string getHoraPrenderLuz(){
@@ -74,10 +83,11 @@ namespace Codigo.Reserva{
         #endregion Getters & Setters
 
         #region Methods
-        public Reserva(string hi, string hf, string oc, string hpl, string hal, string hpt, string hat){
+        public Reserva(string hi, string hf, string oc, string dia, string hpl, string hal, string hpt, string hat){
             this.HoraInicio = hi;
             this.HoraFinal = hf;
             this.Ocupante = oc;
+            this.Dia = dia;
             this.HoraPrenderLuz = hpl;
             this.HoraApagarLuz = hal;
             this.HoraPrenderTem = hpt;
