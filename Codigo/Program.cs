@@ -12,6 +12,10 @@ namespace Codigo
             Console.WriteLine("Hello World!");
             Codigo.Edificio.EdificioCedroMorado Edif = new Codigo.Edificio.EdificioCedroMorado();
             Edif.DesplegarSalon();
+            Edif.HacerReserva();
+            Edif.HacerReserva();
+            Edif.DesplegarSalon();
+            
         }
     }
 }

@@ -10,6 +10,28 @@ namespace Codigo.Usuario{
         
         #endregion Properties
 
+        #region Getters & Setters
+
+        public string getID(){
+            return ID;
+        }
+
+        public void setID(string id){
+            this.ID = id;
+        }
+
+        public string getContraseña(){
+            return Contraseña;
+        }
+
+
+        public bool getAdmin(){
+            return Admin;
+        }
+
+        #endregion Getters & Setters
+
+
         #region Methods
 
         public Usuario(string id, string contraseña, bool admin){
@@ -17,7 +39,7 @@ namespace Codigo.Usuario{
             this.Contraseña = contraseña;
             this.Admin = admin;
         }
-        
+
         #endregion Methods
     }
 }

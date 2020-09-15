@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Codigo.Reserva;
 namespace Codigo.Salon{
@@ -11,7 +12,7 @@ namespace Codigo.Salon{
         private bool Luz;
         private int Temperatura;
         private bool Puerta;
-        private List<Reserva.Reserva> Reservas;
+        private List<Reserva.Reserva> Reservas  = new List<Reserva.Reserva>();
         
         #endregion Properties
 
@@ -63,7 +64,6 @@ namespace Codigo.Salon{
 
         #region Methods
         public Salon(string id, string est, bool luz, int temp, bool pu){
-            Reservas = new List<Reserva.Reserva>();
 
             this.ID = id;
             this.Estado = est;
@@ -71,12 +71,47 @@ namespace Codigo.Salon{
             this.Temperatura = temp;
             this.Puerta = pu;
 
-            Reservas.Add(new Reserva.Reserva(0000, 0000, id, 0000, 0000, 0000, 0000));
+            Reservas.Add(new Reserva.Reserva("0000", "0000", id, "0000", "0000", "0000", "0000"));
 
         }
 
-        public List<Reserva.Reserva> getReservas(){
-            return Reservas;
+        public void getReservas(){
+            if(Reservas.Count == 1 && Reservas[0].getHoraInicio() == "0000" && Reservas[0].getHoraFinal() == "0000"){
+                Console.WriteLine("La Sala no tiene reservas.\n");
+            }else{
+                for( int i=0; i < Reservas.Count; i++ ){
+                    Console.WriteLine(Reservas[i].getHoraInicio());
+                    Console.WriteLine(Reservas[i].getHoraFinal());
+                    Console.WriteLine(Reservas[i].getOcupante());
+                    Console.WriteLine(getTemperatura());
+                    Console.WriteLine(getEstado());
+                }
+            }
+        }
+
+        public void setReservas(string hi, string hf, string id){
+            int pl, pt, al, at;
+            pl = int.Parse(hi) - 5;
+            pt = int.Parse(hi) - 10;
+            al = int.Parse(hf) + 10;
+            at = int.Parse(hf) + 5;
+            if(Reservas.Count == 1 && Reservas[0].getHoraInicio() == "0000"){
+                Reservas[0].setHoraInicio(hi);
+                Reservas[0].setHoraFinal(hf);
+                Reservas[0].setOcupante(id);
+                Reservas[0].setHoraPrenderLuz(pl.ToString());
+                Reservas[0].setHoraPrenderTem(pt.ToString());
+                Reservas[0].setHoraApagarLuz(al.ToString());
+                Reservas[0].setHoraApagarTem(at.ToString());
+                setEstado("Ocupado");
+                setTemperatura(23);
+                setPuerta(true);
+            }else{
+                Reservas.Add(new Reserva.Reserva(hi, hf, id, pl.ToString(), al.ToString(), pt.ToString(), at.ToString()));
+                setEstado("Ocupado");
+                setTemperatura(23);
+                setPuerta(true);
+            }
         }
         #endregion Methods
     }
