@@ -9,5 +9,15 @@ namespace Codigo.Usuario{
         private bool Admin{ get; set; }
         
         #endregion Properties
+
+        #region Methods
+
+        public Usuario(string id, string contraseña, bool admin){
+            this.ID = id;
+            this.Contraseña = contraseña;
+            this.Admin = admin;
+        }
+        
+        #endregion Methods
     }
 }

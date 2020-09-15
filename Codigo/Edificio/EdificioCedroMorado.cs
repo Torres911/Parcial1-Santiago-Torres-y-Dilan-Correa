@@ -7,16 +7,20 @@ namespace Codigo.Edificio{
     public class EdificioCedroMorado{
         
         #region Properties
-        private List<Codigo.Salon.Salon> Salones;
-        private List<Codigo.Usuario.Usuario> Usuarios;
+        private List<Salon.Salon> Salones;
+        private List<Usuario.Usuario> Usuarios;
         #endregion Properties
 
 
         #region Methods
-        public void EdificioCedroMorado(){
-            Salones = new List<Codigo.Salon.Salon>();
-            Salones.Add(new Codigo.Salon.Salon("402", "Disponible", false, 30, false));
-            Console.WriteLine(Salones[0]);
+        public EdificioCedroMorado(){
+            Salones = new List<Salon.Salon>();
+            Salones.Add(new Salon.Salon("401", "Disponible", false, 30, false));
+            Salones.Add(new Salon.Salon("402", "Disponible", false, 30, false));
+
+            Usuarios = new List<Usuario.Usuario>();
+            Usuarios.Add(new Usuario.Usuario("Dilan", "1234", true));
+            Usuarios.Add(new Usuario.Usuario("Santiago", "4321", false));
         }
 
         public void DesplegarHorario(){
@@ -24,7 +28,16 @@ namespace Codigo.Edificio{
         }
 
         public void DesplegarSalon(){
-            Console.WriteLine( "Escriba el ID del Salon" );
+            string id = "";
+            Console.WriteLine( "Escriba el ID del Salon: " );
+            id = Console.ReadLine();
+
+            for (int i = 0; i < Salones.Count; i++){
+                if(id == Salones[i].getID()){
+                    Salones[i].getReservas();
+                }
+            }
+
         }
 
         public void HacerReserva(){
