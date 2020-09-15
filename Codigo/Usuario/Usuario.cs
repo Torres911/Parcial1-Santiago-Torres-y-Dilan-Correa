@@ -9,25 +9,5 @@ namespace Codigo.Usuario{
         private bool Admin{ get; set; }
         
         #endregion Properties
-        
-
-        #region Getters & Setters
-        
-        public string ID{
-            get { return ID; }
-            set { ID = value; }
-        }
-        
-        public string Contraseña{
-            get { return Contraseña; }
-            set { Contraseña = value; }
-        }
-        
-        public bool Admin{
-            get { return Admin; }
-            set { Admin = value; }
-        }
-        
-        #endregion Getters & Setters
     }
 }

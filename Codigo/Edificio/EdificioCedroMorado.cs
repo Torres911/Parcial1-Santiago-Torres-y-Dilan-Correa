@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Codigo.Salon;
 using Codigo.Usuario;
 namespace Codigo.Edificio{
@@ -5,16 +7,16 @@ namespace Codigo.Edificio{
     public class EdificioCedroMorado{
         
         #region Properties
-        private List<Salon> Salones;
-        private List<Usuario> Usuarios;
+        private List<Codigo.Salon.Salon> Salones;
+        private List<Codigo.Usuario.Usuario> Usuarios;
         #endregion Properties
 
 
         #region Methods
-        public EdificioCedroMorado(){
-            Salones = new List<Salon>();
-            Salones.Add(new Salon("402", "Disponible", false, 30, false));
-            Console.Writeline(Salones[1]);
+        public void EdificioCedroMorado(){
+            Salones = new List<Codigo.Salon.Salon>();
+            Salones.Add(new Codigo.Salon.Salon("402", "Disponible", false, 30, false));
+            Console.WriteLine(Salones[0]);
         }
 
         public void DesplegarHorario(){
@@ -22,7 +24,7 @@ namespace Codigo.Edificio{
         }
 
         public void DesplegarSalon(){
-            Console.Writeline( "Escriba el ID del Salon" );
+            Console.WriteLine( "Escriba el ID del Salon" );
         }
 
         public void HacerReserva(){
