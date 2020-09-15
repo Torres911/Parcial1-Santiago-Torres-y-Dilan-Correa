@@ -17,6 +17,7 @@ namespace Codigo.Edificio{
             Salones = new List<Salon.Salon>();
             Salones.Add(new Salon.Salon("401", "Disponible", false, 30, false));
             Salones.Add(new Salon.Salon("402", "Disponible", false, 30, false));
+            Salones.Add(new Salon.Salon("403", "Disponible", false, 30, false));
 
             Usuarios = new List<Usuario.Usuario>();
             Usuarios.Add(new Usuario.Usuario("Dilan", "1234", true));
@@ -25,6 +26,7 @@ namespace Codigo.Edificio{
 
         public void DesplegarHorario(){
             for (int i = 0; i < Salones.Count; i++){
+                Console.WriteLine(Salones[i].getID());
                 Salones[i].getReservas();
             }
         }
@@ -37,6 +39,7 @@ namespace Codigo.Edificio{
 
             for (int i = 0; i < Salones.Count; i++){
                 if(id == Salones[i].getID()){
+                    Console.WriteLine(Salones[i].getID());
                     Salones[i].getReservas();
                     flag = true;
                 }
@@ -58,7 +61,7 @@ namespace Codigo.Edificio{
             Console.WriteLine( "Digite su contraseña: " );
             pw = Console.ReadLine();
             for( int i=0; i < Usuarios.Count; i++ ){
-                if(idname == Usuarios[i].getID() && pw == Usuarios[i].getContraseña() && Usuarios[i].getAdmin() == false || Usuarios[i].getAdmin() == true){
+                if(idname == Usuarios[i].getID() && pw == Usuarios[i].getContraseña() && Usuarios[i].getAdmin() == false){
                     Console.WriteLine( " Digite el id de la sala: " );
                     idsala = Console.ReadLine();
                     flag = true;
@@ -72,8 +75,12 @@ namespace Codigo.Edificio{
                             hi = Console.ReadLine();
                             Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
                             hf = Console.ReadLine();
-                            if(Salones[j].)
-                            Salones[j].setReservas(hi, hf, dia, idname);
+                            if( Salones[j].getValidator(dia, hi, hf) == false ){
+                                Salones[j].setReservas(hi, hf, dia, idname);
+                                break;
+                            } else{
+                                Console.WriteLine("Ya existe una reserva");
+                            }
                         }
                     }
                     if(flag2 == false){

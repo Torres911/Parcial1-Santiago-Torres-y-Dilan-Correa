@@ -75,6 +75,20 @@ namespace Codigo.Salon{
 
         }
 
+        public bool getValidator(string dia, string hi, string hf){
+            bool flag = false;
+
+            for(int i=0; i < Reservas.Count; i++){
+                if(Reservas[i].getDia() == dia && Reservas[i].getHoraInicio() == hi && 
+                    Reservas[i].getHoraFinal() == hf){
+                    return flag = true;
+                }
+            }
+
+
+            return flag;
+        }
+
         public void getReservas(){
             if(Reservas.Count == 1 && Reservas[0].getHoraInicio() == "0000" && Reservas[0].getHoraFinal() == "0000"){
                 Console.WriteLine("La Sala no tiene reservas.\n");
