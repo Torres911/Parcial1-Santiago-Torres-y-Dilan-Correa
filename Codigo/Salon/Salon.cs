@@ -1,3 +1,4 @@
+using Codigo.Reserva;
 namespace Codigo.Salon{
 
     public class Salon{
@@ -48,7 +49,7 @@ namespace Codigo.Salon{
 
         }
 
-        public void CambiosAdmin(string id; string contraseña; bool admin){
+        public void CambiosAdmin(string id, string contraseña, bool admin){
 
         }
 
