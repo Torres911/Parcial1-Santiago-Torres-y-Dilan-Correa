@@ -5,7 +5,7 @@ namespace Codigo.Reserva{
 
         private int HoraInicio{ get; set; }
         private int HoraFinal{ get; set; }
-        private int Ocupante{ get; set; }
+        private string Ocupante{ get; set; }
         private int HoraPrenderLuz{ get; set; }
         private int HoraApagarLuz{ get; set; }
         private int HoraPrenderTem { get; set; }
@@ -16,24 +16,19 @@ namespace Codigo.Reserva{
 
         #region Getters & Setters
 
-        public string HoraInicio{
+        public int HoraInicio{
             get { return HoraInicio; }
             set { HoraInicio = value; }
         }
 
-        public string HoraFinal{
+        public int HoraFinal{
             get { return HoraFinal; }
             set { HoraFinal = value; }
         }
 
-        public bool Ocupante{
+        public string Ocupante{
             get { return Ocupante; }
             set { Ocupante = value; }
-        }
-
-        public int Temperatura{
-            get { return Temperatura; }
-            set { Temperatura = value; }
         }
 
         public int HoraPrenderLuz{
@@ -56,5 +51,18 @@ namespace Codigo.Reserva{
             set { HoraApagarTem = value; }
         }
         #endregion Getters & Setters
+
+        #region Methods
+        public Reserva(int hi, int hf, string oc, int hpl, int hal, int hpt, int hat){
+            this.HoraInicio = hi;
+            this.HoraFinal = hf;
+            this.Ocupante = oc;
+            this.HoraPrenderLuz = hpl;
+            this.HoraApagarLuz = hal;
+            this.HoraPrenderTem = hpt;
+            this.HoraApagarTem = hat;
+        }
+        #endregion Methods
+        
     }
 }

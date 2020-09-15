@@ -9,6 +9,7 @@ namespace Codigo.Salon{
         private string Estado{ get; set; }
         private bool Luz{ get; set; }
         private int Temperatura{ get; set; }
+        private bool Puerta{ get; set; }
         private List<Reserva> Reservas;
         
         #endregion Properties
@@ -35,24 +36,27 @@ namespace Codigo.Salon{
             get { return Temperatura; }
             set { Temperatura = value; }
         }
+
+        public bool Puerta{
+            get { return Puerta; }
+            set { Puerta = value; }
+        }
         
         #endregion Getters & Setters
 
-
         #region Methods
-        
-        public void HacerReserva(){
+        public Salon(string id, string est, bool luz, int temp, bool pu){
+            List<Codigo.Reserva> Reservas = new List<Codigo.Reserva>();
+
+            this.ID = id;
+            this.Estado = est;
+            this.Luz = luz;
+            this.Temperatura = temp;
+            this.Puerta = pu;
+
+            Reservas.Add(new Reserva(0000, 0000, id, 0000, 0000, 0000, 0000));
 
         }
-
-        public void MostrarReserva(){
-
-        }
-
-        public void CambiosAdmin(string id, string contraseña, bool admin){
-
-        }
-
         #endregion Methods
     }
 }
