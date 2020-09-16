@@ -32,6 +32,9 @@ namespace Codigo
                         Edif.CambiosAdmin();
                         break;
                     
+                    case 5:
+                    break;
+                    
                     default:
                         Console.WriteLine("**********************************");
                         Console.WriteLine("    Digite una opcion valida.     ");
