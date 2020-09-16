@@ -95,9 +95,12 @@ namespace Codigo.Salon{
                     Reservas[i].setDia(dia2);
                     Reservas[i].setHoraInicio(hi2);
                     Reservas[i].setHoraFinal(hf2);
+                    ordenarReservas();
                 }
             }
+            Console.WriteLine("**********************************");
             Console.WriteLine(" Modificacion exitosa. \n");
+            Console.WriteLine("**********************************");
         }
 
         public void removeReserva(string dia, string hi, string hf){
@@ -110,7 +113,7 @@ namespace Codigo.Salon{
 
         public void getReservas(){
             if(Reservas.Count == 1 && Reservas[0].getHoraInicio() == "0000" && Reservas[0].getHoraFinal() == "0000"){
-                Console.WriteLine("La Sala no tiene reservas.\n");
+                Console.WriteLine("La Sala no tiene reservas.");
             }else{
                 for( int i=0; i < Reservas.Count; i++ ){
                     Console.WriteLine(Reservas[i].getHoraInicio());
@@ -123,6 +126,16 @@ namespace Codigo.Salon{
             }
         }
 
+        public void ordenarHorayTemp(){
+            for( int i=0; i < Reservas.Count-1; i++ ){
+                if(Reservas[i].getHoraInicio() == Reservas[i+1].getHoraFinal()){
+                    Reservas[i].setHoraApagarLuz("NULL");
+                    Reservas[i].setHoraApagarTem("NULL");
+                    Reservas[i+1].setHoraPrenderLuz("NULL");
+                    Reservas[i+1].setHoraPrenderTem("NULL");
+                }
+            }
+        }
         public void ordenarReservas(){
             int hora;
             for( int i=0; i < Reservas.Count-1; i++ ){
@@ -157,6 +170,7 @@ namespace Codigo.Salon{
                     }
                 }
             }
+            ordenarHorayTemp();
         }
 
         public void setReservas(string hi, string hf, string dia, string id){

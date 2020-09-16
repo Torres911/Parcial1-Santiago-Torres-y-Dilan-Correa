@@ -26,27 +26,36 @@ namespace Codigo.Edificio{
 
         public void DesplegarHorario(){
             for (int i = 0; i < Salones.Count; i++){
-                Console.WriteLine(Salones[i].getID());
+                Console.WriteLine("**********************************");
+                Console.WriteLine("Salon: "+Salones[i].getID());
                 Salones[i].getReservas();
+                Console.WriteLine("**********************************");
             }
         }
 
         public void DesplegarSalon(){
             string id = "";
             bool flag = false;
+            Console.WriteLine("**********************************");
             Console.WriteLine( "Escriba el ID del Salon: " );
             id = Console.ReadLine();
+            Console.WriteLine("**********************************");
 
             for (int i = 0; i < Salones.Count; i++){
                 if(id == Salones[i].getID()){
-                    Console.WriteLine(Salones[i].getID());
+                    Console.WriteLine("**********************************");
+                    Console.WriteLine("Salon: "+Salones[i].getID());
+                    Console.WriteLine("**********************************");
                     Salones[i].getReservas();
+                    Console.WriteLine("**********************************");
                     flag = true;
                 }
             }
 
             if(flag == false){
+                Console.WriteLine("**********************************");
                 Console.WriteLine("El salon no existe");
+                Console.WriteLine("**********************************");
             }
         }
 
@@ -56,25 +65,34 @@ namespace Codigo.Edificio{
             string idsala = "";
             bool flag = false;
             bool flag2 = false;
+            Console.WriteLine("**********************************");
             Console.WriteLine( "Digite su nombre: " );
             idname = Console.ReadLine();
+            Console.WriteLine("**********************************");
             Console.WriteLine( "Digite su contraseña: " );
             pw = Console.ReadLine();
+            Console.WriteLine("**********************************");
             for( int i=0; i < Usuarios.Count; i++ ){
                 if(idname == Usuarios[i].getID() && pw == Usuarios[i].getContraseña() && Usuarios[i].getAdmin() == false){
+                    Console.WriteLine("**********************************");
                     Console.WriteLine( " Digite el id de la sala: " );
                     idsala = Console.ReadLine();
+                    Console.WriteLine("**********************************");
                     flag = true;
                     for (int j = 0; j < Salones.Count; j++){
                         if(idsala == Salones[j].getID() && Salones[j].getEstado() != "Mantenimiento"){
                             flag2 = true;
                             string hi, hf, dia;
+                            Console.WriteLine("**********************************");
                             Console.WriteLine( "Digite el dia de la clase: " );
                             dia = Console.ReadLine();
+                            Console.WriteLine("**********************************");
                             Console.WriteLine( "Digite la hora de inicio de la clase (Hora Militar): " );
                             hi = Console.ReadLine();
+                            Console.WriteLine("**********************************");
                             Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
                             hf = Console.ReadLine();
+                            Console.WriteLine("**********************************");
                             if( Salones[j].getValidator(dia, hi, hf) == false ){
                                 Salones[j].setReservas(hi, hf, dia, idname);
                                 Salones[j].setEstado("Ocupado");
@@ -82,17 +100,23 @@ namespace Codigo.Edificio{
                                 Salones[j].setPuerta(true);
                                 break;
                             } else{
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine("Ya existe una reserva");
+                                Console.WriteLine("**********************************");
                             }
                         }
                     }
                     if(flag2 == false){
+                        Console.WriteLine("**********************************");
                         Console.WriteLine("La sala no existe");
+                        Console.WriteLine("**********************************");
                     }
                 }
             }
             if(flag == false){
+                Console.WriteLine("**********************************");
                 Console.WriteLine("Usuario no existe");
+                Console.WriteLine("**********************************");
             }
         }
 
@@ -100,10 +124,13 @@ namespace Codigo.Edificio{
             string idname = "";
             string idsala = "";
             string pw = "";
+            Console.WriteLine("**********************************");
             Console.WriteLine( "Digite su nombre: " );
             idname = Console.ReadLine();
+            Console.WriteLine("**********************************");
             Console.WriteLine( "Digite su contraseña: " );
             pw = Console.ReadLine();
+            Console.WriteLine("**********************************");
             bool flag = false;
             int opc;
 
@@ -113,27 +140,38 @@ namespace Codigo.Edificio{
             for( int i=0; i < Usuarios.Count; i++ ){
                 if(idname == Usuarios[i].getID() && pw == Usuarios[i].getContraseña() && Usuarios[i].getAdmin() == true){
                     flag = true;
+                    Console.WriteLine("**********************************");
                     Console.WriteLine(" Seleccione una opcion: \n 1. Modificar Reserva\n 2. Eliminar Reserva\n 3. Habilitar / Deshabilitar Mantenimiento\n 4. Salir");
                     opc = int.Parse(Console.ReadLine());
+                    Console.WriteLine("**********************************");
                     do{
                         switch (opc){
                             case 1:
-                                Console.WriteLine( " Digite el id de la sala: " );
+                            Console.WriteLine("**********************************");
+                                Console.WriteLine( "Digite el id de la sala: " );
                                 idsala = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite el dia de la clase: " );
                                 dia1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la hora de inicio de la clase (Hora Militar): " );
                                 hi1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
                                 hf1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite el nuevo dia de la clase: " );
                                 dia2 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la nueva hora de inicio de la clase (Hora Militar): " );
                                 hi2 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la nueva hora de fin de la clase (Hora Militar): " );
                                 hf2 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite La nueva temperatura de la clase (Celsius): " );
                                 newT = int.Parse(Console.ReadLine());
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite el nueva estado la clase (Disponible, Ocupado): " );
                                 newEst = Console.ReadLine();
                                 for (int j = 0; j < Salones.Count; j++){
@@ -145,14 +183,19 @@ namespace Codigo.Edificio{
                                 }
                                 break;
                             case 2:
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( " Digite el id de la sala: " );
                                 idsala = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite el dia de la clase: " );
                                 dia1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la hora de inicio de la clase (Hora Militar): " );
                                 hi1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
                                 hf1 = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 for (int j = 0; j < Salones.Count; j++){
                                     if(idsala == Salones[j].getID()){
                                         Salones[j].removeReserva(dia1, hi1, hf1);
@@ -160,8 +203,10 @@ namespace Codigo.Edificio{
                                 }
                                 break;
                             case 3:
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine( " Digite el id de la sala: " );
                                 idsala = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 for (int j = 0; j < Salones.Count; j++){
                                     if(idsala == Salones[j].getID() && (Salones[j].getEstado() == "Disponible" || Salones[j].getEstado() == "Ocupado")){
                                         Salones[j].setEstado("Mantenimiento");
@@ -171,7 +216,9 @@ namespace Codigo.Edificio{
                                 }
                                 break;
                             default:
+                                Console.WriteLine("**********************************");
                                 Console.WriteLine("Digite una opcion valida");
+                                Console.WriteLine("**********************************");
                                 break;
                         }                        
                     } while (opc != 4);
@@ -179,7 +226,9 @@ namespace Codigo.Edificio{
             }
             
             if(flag == false){
+                Console.WriteLine("**********************************");
                 Console.WriteLine("No es Administrador. No tiene accesso a este menu");
+                Console.WriteLine("**********************************");
             }
         }
 
