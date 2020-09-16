@@ -77,6 +77,9 @@ namespace Codigo.Edificio{
                             hf = Console.ReadLine();
                             if( Salones[j].getValidator(dia, hi, hf) == false ){
                                 Salones[j].setReservas(hi, hf, dia, idname);
+                                Salones[j].setEstado("Ocupado");
+                                Salones[j].setTemperatura(23);
+                                Salones[j].setPuerta(true);
                                 break;
                             } else{
                                 Console.WriteLine("Ya existe una reserva");
@@ -95,16 +98,83 @@ namespace Codigo.Edificio{
 
         public void CambiosAdmin(){
             string idname = "";
+            string idsala = "";
             string pw = "";
             Console.WriteLine( "Digite su nombre: " );
             idname = Console.ReadLine();
             Console.WriteLine( "Digite su contraseña: " );
             pw = Console.ReadLine();
             bool flag = false;
+            int opc;
+
+            string dia1, hi1,  hf1,  dia2,  hi2,  hf2, newEst;
+            int newT;
 
             for( int i=0; i < Usuarios.Count; i++ ){
                 if(idname == Usuarios[i].getID() && pw == Usuarios[i].getContraseña() && Usuarios[i].getAdmin() == true){
                     flag = true;
+                    Console.WriteLine(" Seleccione una opcion: \n 1. Modificar Reserva\n 2. Eliminar Reserva\n 3. Habilitar / Deshabilitar Mantenimiento\n 4. Salir");
+                    opc = int.Parse(Console.ReadLine());
+                    do{
+                        switch (opc){
+                            case 1:
+                                Console.WriteLine( " Digite el id de la sala: " );
+                                idsala = Console.ReadLine();
+                                Console.WriteLine( "Digite el dia de la clase: " );
+                                dia1 = Console.ReadLine();
+                                Console.WriteLine( "Digite la hora de inicio de la clase (Hora Militar): " );
+                                hi1 = Console.ReadLine();
+                                Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
+                                hf1 = Console.ReadLine();
+                                Console.WriteLine( "Digite el nuevo dia de la clase: " );
+                                dia2 = Console.ReadLine();
+                                Console.WriteLine( "Digite la nueva hora de inicio de la clase (Hora Militar): " );
+                                hi2 = Console.ReadLine();
+                                Console.WriteLine( "Digite la nueva hora de fin de la clase (Hora Militar): " );
+                                hf2 = Console.ReadLine();
+                                Console.WriteLine( "Digite La nueva temperatura de la clase (Celsius): " );
+                                newT = int.Parse(Console.ReadLine());
+                                Console.WriteLine( "Digite el nueva estado la clase (Disponible, Ocupado): " );
+                                newEst = Console.ReadLine();
+                                for (int j = 0; j < Salones.Count; j++){
+                                    if(idsala == Salones[j].getID()){
+                                        Salones[j].modReserva(dia1, hi1, hf1, dia2, hi2, hf2);
+                                        Salones[j].setEstado(newEst);
+                                        Salones[j].setTemperatura(newT);
+                                    }                                
+                                }
+                                break;
+                            case 2:
+                                Console.WriteLine( " Digite el id de la sala: " );
+                                idsala = Console.ReadLine();
+                                Console.WriteLine( "Digite el dia de la clase: " );
+                                dia1 = Console.ReadLine();
+                                Console.WriteLine( "Digite la hora de inicio de la clase (Hora Militar): " );
+                                hi1 = Console.ReadLine();
+                                Console.WriteLine( "Digite la hora de fin de la clase (Hora Militar): " );
+                                hf1 = Console.ReadLine();
+                                for (int j = 0; j < Salones.Count; j++){
+                                    if(idsala == Salones[j].getID()){
+                                        Salones[j].removeReserva(dia1, hi1, hf1);
+                                    }                                
+                                }
+                                break;
+                            case 3:
+                                Console.WriteLine( " Digite el id de la sala: " );
+                                idsala = Console.ReadLine();
+                                for (int j = 0; j < Salones.Count; j++){
+                                    if(idsala == Salones[j].getID() && (Salones[j].getEstado() == "Disponible" || Salones[j].getEstado() == "Ocupado")){
+                                        Salones[j].setEstado("Mantenimiento");
+                                    }else{
+                                        Salones[j].setEstado("Disponible");
+                                    }
+                                }
+                                break;
+                            default:
+                                Console.WriteLine("Digite una opcion valida");
+                                break;
+                        }                        
+                    } while (opc != 4);
                 }
             }
             

@@ -15,7 +15,6 @@ namespace Codigo
             Edif.HacerReserva();
             Edif.HacerReserva();
             Edif.DesplegarHorario();
-            Edif.HacerReserva();
         }
     }
 }
