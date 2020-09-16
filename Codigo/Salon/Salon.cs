@@ -79,8 +79,7 @@ namespace Codigo.Salon{
             bool flag = false;
 
             for(int i=0; i < Reservas.Count; i++){
-                if(Reservas[i].getDia() == dia && Reservas[i].getHoraInicio() == hi && 
-                    Reservas[i].getHoraFinal() == hf){
+                if(Reservas[i].getDia() == dia && Reservas[i].getHoraInicio() == hi && Reservas[i].getHoraFinal() == hf){
                     return flag = true;
                 }
             }
@@ -116,12 +115,12 @@ namespace Codigo.Salon{
                 Console.WriteLine("La Sala no tiene reservas.");
             }else{
                 for( int i=0; i < Reservas.Count; i++ ){
-                    Console.WriteLine(Reservas[i].getHoraInicio());
-                    Console.WriteLine(Reservas[i].getHoraFinal());
-                    Console.WriteLine(Reservas[i].getOcupante());
-                    Console.WriteLine(Reservas[i].getDia());
-                    Console.WriteLine(getTemperatura());
-                    Console.WriteLine(getEstado());
+                    Console.WriteLine("Hora Inicio: "+Reservas[i].getHoraInicio());
+                    Console.WriteLine("Hora Final: "+Reservas[i].getHoraFinal());
+                    Console.WriteLine("Ocupante: "+Reservas[i].getOcupante());
+                    Console.WriteLine("Dia de Reserva: "+Reservas[i].getDia());
+                    Console.WriteLine("Temperatura del Salon: "+getTemperatura());
+                    Console.WriteLine("Estado del Salon: "+getEstado());
                 }
             }
         }

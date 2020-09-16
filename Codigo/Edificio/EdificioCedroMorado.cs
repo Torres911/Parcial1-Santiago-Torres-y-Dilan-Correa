@@ -94,7 +94,9 @@ namespace Codigo.Edificio{
                             hf = Console.ReadLine();
                             Console.WriteLine("**********************************");
                             if( Salones[j].getValidator(dia, hi, hf) == false ){
+                                Console.WriteLine("**********************************");
                                 Salones[j].setReservas(hi, hf, dia, idname);
+                                Console.WriteLine("**********************************");
                                 Salones[j].setEstado("Ocupado");
                                 Salones[j].setTemperatura(23);
                                 Salones[j].setPuerta(true);
@@ -174,6 +176,7 @@ namespace Codigo.Edificio{
                                 Console.WriteLine("**********************************");
                                 Console.WriteLine( "Digite el nueva estado la clase (Disponible, Ocupado): " );
                                 newEst = Console.ReadLine();
+                                Console.WriteLine("**********************************");
                                 for (int j = 0; j < Salones.Count; j++){
                                     if(idsala == Salones[j].getID()){
                                         Salones[j].modReserva(dia1, hi1, hf1, dia2, hi2, hf2);
